@@ -58,9 +58,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
-            title = itemView.findViewById(R.id.textView);
-            description = itemView.findViewById(R.id.textView2);
+            imageView = itemView.findViewById(R.id.imageview);
+            title = itemView.findViewById(R.id.title_txt);
+            description = itemView.findViewById(R.id.description_text);
         }
     }
 }
