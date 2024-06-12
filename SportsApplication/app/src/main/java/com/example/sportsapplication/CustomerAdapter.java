@@ -18,8 +18,13 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Sports
 
     private List<Sport> sportList;
 
+    public static ItemClickListener clickListener;
     public CustomerAdapter(List<Sport> sportList) {
         this.sportList = sportList;
+    }
+
+    public void setClickListener(ItemClickListener myListener){
+        this.clickListener = myListener;
     }
 
     @NonNull
@@ -51,7 +56,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Sports
         return sportList.size();
     }
 
-    public static class SportsViewHolder extends RecyclerView.ViewHolder{
+    public static class SportsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView textView;
         ImageView imageView;
         public SportsViewHolder(View itemView) {
@@ -60,8 +65,15 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Sports
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageViewCard);
 
+            itemView.setOnClickListener((View.OnClickListener) this);
         }
         //Holds the references to the view within the item layout
+
+        public void onClick(View v) {
+            if (clickListener != null){
+                clickListener.onClick(v, getAdapterPosition());
+            }
+        }
     }
 
 }
